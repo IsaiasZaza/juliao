@@ -4,7 +4,7 @@
   const header = document.getElementById('header');
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
-  const navLinks = document.querySelectorAll('.nav__link, .footer__nav a, .btn--ghost');
+  const navLinks = document.querySelectorAll('.nav__link, .footer__nav a, .btn--ghost, .nav__cta');
 
   /* Header scroll effect */
   function onScroll() {
@@ -35,6 +35,10 @@
 
   navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 992) closeMenu();
   });
 
   /* Active nav link on scroll */
