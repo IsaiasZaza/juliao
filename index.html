@@ -45,7 +45,10 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <div class="hero__bg">
-        <img src="images/studio-2.png" alt="Júlio Petros e Thassya Helena no estúdio vocal" class="hero__img">
+        <picture class="responsive-media hero__picture">
+          <source media="(max-width: 768px)" srcset="images/mobile-1.png">
+          <img src="images/hero-web.png" alt="Júlio Petros e Thassya Helena no estúdio vocal" class="hero__img">
+        </picture>
         <div class="hero__overlay"></div>
         <div class="hero__glow hero__glow--blue"></div>
         <div class="hero__glow hero__glow--gold"></div>
@@ -100,7 +103,10 @@
         <div class="about__grid">
           <div class="about__visual reveal">
             <div class="about__image-wrap">
-              <img src="images/professores-1.png" alt="Júlio Petros e Thassya Helena" loading="lazy">
+              <picture class="responsive-media about__picture">
+                <source media="(max-width: 768px)" srcset="images/mobile-2.png">
+                <img src="images/professores-web.png" alt="Júlio Petros e Thassya Helena" class="about__img" loading="lazy">
+              </picture>
               <div class="about__image-frame"></div>
             </div>
           </div>
@@ -293,32 +299,72 @@
 
     <!-- Estúdio -->
     <section class="section section--estudio" id="estudio">
-      <div class="estudio__visual reveal">
-        <img src="images/studio-1.png" alt="Interior do Estúdio Vocal com equipamento profissional" loading="lazy">
-        <div class="estudio__visual-overlay"></div>
+      <div class="estudio__bg" aria-hidden="true">
+        <picture class="estudio__picture">
+          <source media="(max-width: 768px)" srcset="images/mobile-3.png">
+          <img src="images/studio-1.png" alt="" class="estudio__bg-img" loading="lazy">
+        </picture>
+        <div class="estudio__overlay"></div>
+        <div class="estudio__glow estudio__glow--gold"></div>
+        <div class="estudio__glow estudio__glow--blue"></div>
       </div>
 
       <div class="container">
-        <div class="estudio__content">
-          <div class="section__header section__header--left section__header--decorated reveal">
-            <span class="section__label">Nosso Estúdio</span>
-            <h2 class="section__title">Um espaço <em>especializado na sua voz</em></h2>
-            <p class="section__desc">
-              Nosso estúdio foi construído especialmente para o desenvolvimento técnico vocal. Ambiente acústico, equipamento de tecnologia vocal e estrutura pensada para que cada aula seja uma experiência de evolução real.
-            </p>
-            <p class="section__desc">
-              Atendemos cantores de todas as idades — do iniciante que está descobrindo a voz ao profissional que quer ir além.
-            </p>
-          </div>
+        <div class="section__header section__header--decorated reveal">
+          <span class="section__label">Nosso Estúdio</span>
+          <h2 class="section__title">Um espaço <em>especializado na sua voz</em></h2>
+          <p class="section__desc">
+            Nosso estúdio foi construído especialmente para o desenvolvimento técnico vocal. Ambiente acústico, equipamento de tecnologia vocal e estrutura pensada para que cada aula seja uma experiência de evolução real.
+          </p>
+        </div>
 
-          <div class="estudio__tags reveal">
+        <div class="estudio__features reveal">
+          <article class="estudio-feature">
+            <div class="estudio-feature__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3 class="estudio-feature__title">Ambiente acústico</h3>
+            <p class="estudio-feature__text">Espaço tratado para escuta precisa e desenvolvimento vocal consciente.</p>
+          </article>
+
+          <article class="estudio-feature">
+            <div class="estudio-feature__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h2l1 4 1-4h2"/></svg>
+            </div>
+            <h3 class="estudio-feature__title">Tecnologia vocal</h3>
+            <p class="estudio-feature__text">Equipamento e recursos pensados para análise, prática e evolução da voz.</p>
+          </article>
+
+          <article class="estudio-feature">
+            <div class="estudio-feature__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="estudio-feature__title">Todos os níveis</h3>
+            <p class="estudio-feature__text">Do iniciante ao avançado, com acompanhamento real em cada etapa.</p>
+          </article>
+
+          <article class="estudio-feature">
+            <div class="estudio-feature__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="estudio-feature__title">Método exclusivo</h3>
+            <p class="estudio-feature__text">Aulas organizadas com base técnica, identidade e aplicação prática.</p>
+          </article>
+        </div>
+
+        <div class="estudio__body reveal">
+          <p class="estudio__lead">
+            Atendemos cantores de todas as idades — do iniciante que está descobrindo a voz ao profissional que quer ir além.
+          </p>
+
+          <div class="estudio__tags">
             <span class="tag">Tecnologia vocal</span>
             <span class="tag">Todos os níveis</span>
             <span class="tag">Todas as idades</span>
             <span class="tag">Ambiente especializado</span>
           </div>
 
-          <div class="estudio__info reveal">
+          <div class="estudio__info">
             <div class="estudio__info-item">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div>

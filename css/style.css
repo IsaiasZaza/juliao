@@ -66,6 +66,21 @@ img {
   display: block;
 }
 
+.responsive-media {
+  display: block;
+}
+
+.hero__picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about__picture img {
+  width: 100%;
+  object-fit: cover;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -288,11 +303,21 @@ strong {
   inset: 0;
 }
 
-.hero__img {
+.hero__picture {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+}
+
+.hero__img {
+  object-position: center 22%;
+}
+
+@media (max-width: 768px) {
+  .hero__img {
+    object-position: center top;
+  }
 }
 
 .hero__overlay {
@@ -556,10 +581,24 @@ strong {
   overflow: hidden;
 }
 
-.about__image-wrap img {
+.about__picture {
   width: 100%;
-  aspect-ratio: 4/5;
+  height: 100%;
+}
+
+.about__image-wrap img,
+.about__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 768px) {
+  .about__img {
+    aspect-ratio: 3 / 4;
+    object-position: center 8%;
+  }
 }
 
 .about__image-frame {
@@ -915,50 +954,159 @@ strong {
 
 /* ---- Estúdio ---- */
 .section--estudio {
-  padding-top: 0;
+  overflow: hidden;
   background: var(--bg-secondary);
 }
 
-.estudio__visual {
+.section--estudio .container {
   position: relative;
-  height: 50vh;
-  min-height: 360px;
-  max-height: 520px;
-  overflow: hidden;
+  z-index: 1;
 }
 
-.estudio__visual img {
+.estudio__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.estudio__picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.estudio__bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 35%;
+  transform: scale(1.04);
 }
 
-.estudio__visual-overlay {
+@media (max-width: 768px) {
+  .estudio__bg-img {
+    object-position: center 25%;
+    transform: scale(1.08);
+  }
+}
+
+.estudio__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 30%, var(--bg-secondary) 100%);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(10, 10, 10, 0.35) 0%, rgba(10, 10, 10, 0.82) 100%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.55) 38%, rgba(10, 10, 10, 0.72) 68%, rgba(10, 10, 10, 0.94) 100%),
+    linear-gradient(105deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.45) 50%, rgba(10, 10, 10, 0.82) 100%);
 }
 
-.section--estudio .container {
-  margin-top: -80px;
-  position: relative;
-  z-index: 2;
+.estudio__overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.06) 0%, transparent 45%);
+  pointer-events: none;
 }
 
-.estudio__content {
-  background: var(--bg-card);
+.estudio__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+}
+
+.estudio__glow--gold {
+  top: 8%;
+  right: -6%;
+  width: 420px;
+  height: 420px;
+  background: rgba(212, 175, 55, 0.14);
+}
+
+.estudio__glow--blue {
+  bottom: 12%;
+  left: -8%;
+  width: 380px;
+  height: 380px;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.section--estudio .section__header {
+  margin-bottom: clamp(32px, 4vw, 44px);
+}
+
+.estudio__features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: clamp(36px, 5vw, 48px);
+}
+
+.estudio-feature {
+  padding: 28px 22px;
+  background: rgba(10, 10, 10, 0.58);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: clamp(36px, 5vw, 56px);
-  backdrop-filter: blur(20px);
+  text-align: center;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition);
+}
+
+.estudio-feature:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  background: rgba(10, 10, 10, 0.72);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 212, 255, 0.08);
+}
+
+.estudio-feature__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: var(--gold-light);
+}
+
+.estudio-feature__title {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  color: var(--white);
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+}
+
+.estudio-feature__text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--gray-muted);
+}
+
+.estudio__body {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.estudio__lead {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: rgba(209, 209, 209, 0.9);
+  margin-bottom: 28px;
 }
 
 .estudio__tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  margin: 32px 0;
+  margin-bottom: 36px;
 }
 
 .tag {
@@ -975,9 +1123,15 @@ strong {
 .estudio__info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 20px;
+  padding: 28px;
+  background: rgba(10, 10, 10, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  text-align: left;
 }
 
 .estudio__info-item {
@@ -1268,6 +1422,10 @@ strong {
     grid-column: span 2;
   }
 
+  .estudio__features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .estudio__info {
     grid-template-columns: 1fr;
   }
@@ -1356,7 +1514,7 @@ strong {
   }
 
   .hero__img {
-    object-position: center 25%;
+    object-position: center top;
   }
 
   .hero__overlay {
@@ -1446,8 +1604,10 @@ strong {
     max-width: 100%;
   }
 
-  .about__image-wrap img {
+  .about__image-wrap img,
+  .about__img {
     aspect-ratio: 3 / 4;
+    object-position: center 8%;
   }
 
   .teacher-card {
@@ -1504,18 +1664,11 @@ strong {
     font-size: 1rem;
   }
 
-  .estudio__visual {
-    height: 42vh;
-    min-height: 260px;
-    max-height: 360px;
-  }
-
-  .section--estudio .container {
-    margin-top: -48px;
-  }
-
-  .estudio__content {
-    padding: 28px 20px;
+  .estudio__features {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .estudio__tags {
