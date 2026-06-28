@@ -23,6 +23,7 @@
     const isOpen = navMenu.classList.toggle('open');
     navToggle.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
@@ -30,6 +31,7 @@
     navMenu.classList.remove('open');
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu');
     document.body.style.overflow = '';
   }
 
